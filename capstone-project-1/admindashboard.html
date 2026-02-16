@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking Admin</title>
+    
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="logo.png" class="logo" alt="Smart Parking">
+
+        <a href="admindashboard.html">Dashboard</a>
+        <a href="parkinglots.html">Parking Lots</a>
+        <a href="users.html">Users</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="revenue.html">Revenue</a>
+        <a href="settings.html">Settings</a>
+      
+    </div>
+
+    
+
+    <!-- Main -->
+    <div class="main">
+      <div class="topbar">
+    <h1>Smart Parking Admin</h1>
+
+  <div class="profile">
+    
+    <img src="p.jpeg"
+         id="adminProfile"
+         class="profile-img"
+         alt="Admin">
+
+    <!-- Dropdown menu -->
+    <div class="profile-menu" id="profileMenu">
+        <a href="#">My Profile</a>
+         <a href="adminlogin.html">Logout</a>
+         <a href="settings.html">Settings</a>
+         
+    </div>
+
+    <!-- Profile Info Box (OUTSIDE menu) -->
+    <div class="profile-box" id="profileBox">
+
+    <img src="p.jpeg" class="profile-card-img" alt="Admin">
+
+    <h3>Hansal Anjaria</h3>
+
+    <p><b>Phone:</b> +91 99999 99999</p>
+    <p><b>Email:</b> hansal.anjaria@gmail.com</p>
+    <p><b>Role:</b> Admin</p>
+
+    <a href="adminlogin.html">Logout</a>
+    
+</div>
+</div>
+</div>
+
+        <div class="cards">
+            <div class="card">
+                <p>Total Parking Lots</p>
+                <h2>1000</h2>
+            </div>
+
+            <div class="card">
+                <p>Active Users</p>
+                <h2>1,245</h2>
+            </div>
+
+            <div class="card">
+                <p>Occupied / Available</p>
+                <h2>360 / 640</h2>
+            </div>
+
+            <div class="card">
+                <p>Monthly Revenue</p>
+                <h2>₹12,500</h2>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const adminProfile = document.getElementById("adminProfile");
+const profileMenu  = document.getElementById("profileMenu");
+const profileBox   = document.getElementById("profileBox");
+
+// profile image click → menu open/close
+adminProfile.addEventListener("click", function (e) {
+    e.stopPropagation();
+    profileMenu.style.display =
+        profileMenu.style.display === "block" ? "none" : "block";
+
+    profileBox.style.display = "none"; // box close when menu open
+});
+
+// MY PROFILE click
+document.querySelector(".profile-menu a").addEventListener("click", function(e){
+    e.preventDefault();
+
+    profileBox.style.display =
+        profileBox.style.display === "block" ? "none" : "block";
+
+    profileMenu.style.display = "none";
+});
+
+// outside click → close everything
+window.addEventListener("click", function(e){
+    if (!adminProfile.contains(e.target) &&
+        !profileMenu.contains(e.target) &&
+        !profileBox.contains(e.target)) {
+
+        profileMenu.style.display = "none";
+        profileBox.style.display = "none";
+    }
+}); 
+</script>
+</body>
+</html>
